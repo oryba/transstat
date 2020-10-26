@@ -20,11 +20,12 @@ class Vehicle:
 
 
 class TransRecord:
-    def __init__(self, number: str, model: str, status: str, _type: type):
+    def __init__(self, number: str, model: str, status: str, _type: type, purpose: str):
         self.number = number
         self.model = model
         self.status = status
         self.type = _type
+        self.purpose = purpose
 
     def __repr__(self):
         return f"{self.type} {self.model} #{self.number} ({self.status})"

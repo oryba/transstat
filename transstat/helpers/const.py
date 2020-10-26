@@ -1,9 +1,8 @@
 from attrdict import AttrDict
 
 TYPE = AttrDict(
-    TRAM='T',
-    TROLL='Tm',
-    SUB='M'
+    TRAM='Tram',
+    TROLL='Troll'
 )
 
 STATUS = AttrDict(
