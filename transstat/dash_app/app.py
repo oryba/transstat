@@ -95,6 +95,9 @@ def create_app():
     def update_chart(city_id, model_options):
         model_stats = get_model_stats(city_id, types.HashablePlainList(model_options))
 
+        if model_stats is None:
+            return html.Center("Дані ще не готові")
+
         figs = [dcc.Graph(
             id=f'model-stats-{t}',
             className='col-sm-12 col-lg-6',

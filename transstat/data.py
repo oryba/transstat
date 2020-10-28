@@ -54,6 +54,8 @@ def get_count_data(city_id, count_options):
 def get_model_stats(city_id, model_options):
     data = Vehicle.vehicles_status_by_city(city_id)
     df_vehicles = pd.DataFrame(data)
+    if df_vehicles.empty:
+        return None
     df_vehicles.columns = data.keys()
 
     target_df = df_vehicles[

@@ -2,6 +2,7 @@ from data_sources.dozor import get_vehicles
 from data_sources.transphoto import get_records
 from db import session
 from db.models import City, Vehicle, Spot
+from helpers import const
 
 
 def run_spotting():

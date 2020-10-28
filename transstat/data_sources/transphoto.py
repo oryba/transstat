@@ -53,10 +53,12 @@ def get_records_by_city(city, _type) -> [TransRecord]:
 
 def get_records():
     cities = session.query(City).filter(City.trans_id != '').all()
+    session.execute('''DELETE FROM spots''')
+    session.commit()
     for city in cities:
         print(f"<{city.name}> Fetching TransPhoto data")
         # TODO: replace with a single query
-        vehicles = {(v.number, v.type): v for v in session.query(Vehicle).filter(City.id == city.id).all()}
+        vehicles = {(v.number, v.type): v for v in session.query(Vehicle).filter(Vehicle.city_id == city.id).all()}
 
         spotted = {}
         for _type in const.TYPE.values():
