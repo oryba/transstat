@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    image: docker.pkg.github.com/oryba/transstat/app:0.0.1
+    ports:
+      - "8050:8050"
+networks:
+  internal:
+    driver: bridge

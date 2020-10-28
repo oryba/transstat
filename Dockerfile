@@ -2,8 +2,11 @@ FROM ubuntu:latest
 MAINTAINER Oleh Rybalchenko 'oryba@cloudflex.team'
 RUN apt-get update -y
 RUN apt-get install -y python3-pip python3-dev build-essential
-COPY . /app
+RUN mkdir /app
 WORKDIR /app
+COPY ./requirements.txt /app/requirements.txt
 RUN pip3 install -r requirements.txt
-ENTRYPOINT ['python']
-CMD ['entry.py']
+COPY . /app
+ENV PYTHONPATH "${PYTHONPATH}:/app/transstat"
+WORKDIR /app
+CMD python3 entry.py
